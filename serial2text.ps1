@@ -1,6 +1,9 @@
 # serial2text PS Script
 # Created 28/10/2021
 
+# BlackPixel-AU
+# https://github.com/BlackPixel-AU/serial2text
+
 $txtfile = "C:\serial_text.txt" # <- Change text file location here #
 
 $serial = WMIC BIOS GET SERIALNUMBER # get sn
@@ -43,14 +46,6 @@ Write-Host "Writing to: " $txtfile
 "$compname - $serial" | out-file $txtfile -append # write to txt file
 
 Write-Host "Done!"
-
-# legacy duplication check #
-
-#Write-Host ---------------
-
-#Write-Host "Duplicates in file:"
-
-#Get-Content $txtfile | Group-Object | Where-Object { $_.Count -gt 1 } | Select -ExpandProperty Name # Write-Host duplicates in txt file
 
 start-sleep 3
 
